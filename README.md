@@ -87,14 +87,12 @@ docker desktop 및 터미널을 활용법을 익혀서, 앞으로 있을 AI관�
 OS: Windows 11 pro 26H2
 Linux 환경 : WSL2 설치 및 Ubuntu 사용
 Shell: Bash (Ubuntu와 Git Bash에서 사용)
-Terminal: Visual Studio Code Integrated Terminal
+Terminal: Visual Studio Code Integrated Termina
 
 Docker 버전  
 ```
 omg@DESKTOP-6MDPNB3:~$ docker --version
 Docker version 29.9.2, build a82e528
-```
-
 omg@DESKTOP-6MDPNB3:~$ docker info
 Client:
  Version:    29.9.2
@@ -105,10 +103,12 @@ Client:
     Version:  v1.152.0
     Path:     /usr/local/lib/docker/cli-plugins/docker-agent
     ...
-
+```
 Git 버전
+```
 omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
+```
 
 ## 2) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
 - [x] 터미널 기본 조작 및 폴더 구성
