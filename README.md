@@ -79,10 +79,10 @@ Git 설정 및 GitHub 연동
 
 ####################################################################################################
 
-(1) 프로젝트 개요  
+1) 프로젝트 개요  
 docker desktop 및 터미널을 활용법을 익혀서, 앞으로 있을 AI관련 프로젝트를 원활히 진행하기 위한 작업 환경을 구축하는 것이 이번 미션1의 목표 
 
-(2) 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)  
+2) 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)  
 OS: Windows 11 pro 26H2  
 Linux 환경 : WSL2 설치 및 Ubuntu 사용  
 Shell: Bash (Ubuntu와 Git Bash에서 사용)  
@@ -109,20 +109,22 @@ omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
 ```
 
-## 2) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
-- [x] 터미널 기본 조작 및 폴더 구성
-
-> docker로 가상 우분트 환경 만들기
+3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)     
+- [x] 터미널 기본 조작 및 폴더 구성  
+> docker로 가상 우분트 환경 만들기  
+```
 omg@DESKTOP-6MDPNB3:~$ docker start mybox
 mybox
 omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox bash
 root@901195528e5d:/# 
-
+```
 > 현재 디렉토리안에 있는 일반파일과 폴더를 보여주는 명령어 ls
+```
 root@901195528e5d:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
-
-> ls -la : -la 옵션은 longformat, 숨긴파일도 포함해서 보여줌
+```
+> ls -la : -la 옵션은 longformat, 숨긴파일도 포함해서 보여줌  
+```
 root@901195528e5d:/# ls -la
 total 64
 drwxr-xr-x   1 root root 4096 Nov  4 07:41 .
@@ -132,8 +134,9 @@ drwxr-xr-x   2 root root 4096 Oct 25 10:26 .rock
 lrwxrwxrwx   1 root root    7 Apr 20  2026 bin -> usr/bin
 drwxr-xr-x   2 root root 4096 Apr 20  2026 boot
 ...
-
-> cd 명령어로 폴더 이동
+```
+> cd 명령어로 폴더 이동  
+```
 root@901195528e5d:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  memo.txt  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
 root@901195528e5d:/# cd home
@@ -142,6 +145,7 @@ ubuntu
 root@901195528e5d:/home# cd ..
 root@901195528e5d:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  memo.txt  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
+```
 
 root@901195528e5d:/# mkdir temp
 root@901195528e5d:/# cd temp
