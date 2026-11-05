@@ -227,8 +227,14 @@ omg@DESKTOP-6MDPNB3:~$
 ```
 전처럼, mybox1의 우분투 터미널로 접속하려면 exec 명령어를 이용.  
 그러기 위해선 컨테이너가 start 명령어로 이미 실행 중이 상태여야 한다.  
-그리고 docker stop [컨테이너 이름]을 사용해야만 그 컨테이너 status가 exited로 바뀐다.
+그리고 docker stop [컨테이너 이름]을 사용해야만 그 컨테이너 status가 exited로 바뀐다.  
+하지만 run의 경우와 다르게 exec 명령어는 적어도 2개의 인자를 받는다.  
+코드 마지막에 bash를 누락하여 오류가 발생함.  
 ```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker exec -it mybox2
+docker: 'docker exec' requires at least 2 arguments
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+See 'docker exec --help' for more information
 omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox1 bash
 root@ea5249983202:/# ls  
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
