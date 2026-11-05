@@ -227,7 +227,7 @@ Client:
  ...
 ```
 
-- [x] hello-world 실행  
+- [x] hello-world 실행 + ubuntu image 활용
 이미 만들어져있는 기본 이미지 중 하나인 hello-world 이미지를 기반으로 컨테이너 생성
 ```
 omg@DESKTOP-6MDPNB3:~$ docker run hello-world
@@ -242,12 +242,31 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ...
 ```
-현재 생성된 컨테이너의 목록을 보여줌. hello-world 이미지로 컨테이너 만들때 이름을 특정하지 않아서 'adoring_fermi'라는
-랜덤 이름이 붙게됨. 이 컨테이너는 사용 중이지 않아서 status가 Exited 로 표시됨.
+아래는 ubuntu 이미지를 기반으로 mybox1이라는 이름의 컨테이너 생성
+-it 옵션은 대화형 입력을 유지(Interactive)하면서 터미널을 할당
+"root@c4bf5d600a47:/#"는 새로운 리눅스 환경에 접속된 것을 보여줌
+```
+omg@DESKTOP-6MDPNB3:~$ docker run -it --name mybox1 ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+f3f25b84a7d7: Pull complete 
+edafa32f5d9e: Pull complete 
+21594acc2d8b: Download complete 
+Digest: sha256:6a06111c3b0a8600feadb270aec771dc239bf407b25625f93f44ab00e11f4d3c
+Status: Downloaded newer image for ubuntu:latest
+root@c4bf5d600a47:/#
+root@c4bf5d600a47:/# exit
+exit
+```
+아래는 현재 생성된 컨테이너의 목록을 보여줌.  
+hello-world 이미지로 컨테이너 만들때 이름을 특정하지 않아서 'adoring_fermi'라는 
+랜덤 이름이 붙게됨. ubuntu 이미지로 만들어진 컨테이너인 mybox1도 확인 가능.
+두 컨테이너는 사용 중이지 않아서 status가 Exited 로 표시됨.
 ```
 omg@DESKTOP-6MDPNB3:~$ docker ps -a
-CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
-b9e3fa3d3bef   hello-world   "/hello"   50 seconds ago   Exited (0) 50 seconds ago             adoring_fermi
+CONTAINER ID   IMAGE         COMMAND       CREATED          STATUS                      PORTS     NAMES
+c4bf5d600a47   ubuntu        "/bin/bash"   13 minutes ago   Exited (0) 33 seconds ago             mybox1
+b9e3fa3d3bef   hello-world   "/hello"      49 minutes ago   Exited (0) 49 minutes ago             adoring_fermi
 ```
 아래 코드는 현재 생성된 이미지를 보여줌.
 ```
@@ -255,10 +274,39 @@ omg@DESKTOP-6MDPNB3:~$ docker images
                                                                                                                                          i Info →   U  In Use
 IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
 hello-world:latest   c567b231f656       25.9kB         9.49kB    U   
+ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U   
 omg@DESKTOP-6MDPNB3:~$ 
 ```
+아래 코드는 mybox1 컨테이너의 로그를 보여준다.
+```
+omg@DESKTOP-6MDPNB3:~$ docker logs mybox1
+root@c4bf5d600a47:/# exit
+exit
+```
+아래는 컨테이너가 사용하는 리소스 현황을 보여주는 명령어인데 모든 컨테이너가 exited상태라 아무것도 나오지 않음.
+```
+omg@DESKTOP-6MDPNB3:~$ docker stats --no-stream
+omg@DESKTOP-6MDPNB3:~$ 
+```
+docker start [컨테이너 이름] : 이미 생성된 컨테이너 실행.
+mybox1이 running 상태로 바뀌기에 리소스 상태가 출력된다.
+```
+omg@DESKTOP-6MDPNB3:~$ docker start mybox1
+mybox1
+omg@DESKTOP-6MDPNB3:~$ docker stats --no-stream
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O     PIDS
+c4bf5d600a47   mybox1    0.00%     3.672MiB / 7.576GiB   0.05%     1.17kB / 126B   16.8MB / 0B   1
+```
+
+omg@DESKTOP-6MDPNB3:~$ 
+omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox1 bash
+root@c4bf5d600a47:/# 
+
+
 
 - [x] Dockerfile 빌드/실행  
+
+
 
 Docker 기본 운영 명령 수행
     이미지: 다운로드/목록 확인 (예: docker images)
@@ -270,7 +318,25 @@ Docker 기본 운영 명령 수행
     hello-world 실행 성공을 기록한다.
     ubuntu 컨테이너를 실행하고 내부 진입 후 간단 명령(예: ls, echo) 수행 결과를 기록한다.
     컨테이너 종료/유지(attach/exec 등)의 차이를 스스로 관찰하고 간단히 정리한다.
+    
+기존 Dockerfile 기반 커스텀 이미지 제작
+    아래 방식 중 하나를 선택하여 기존 Dockerfile/이미지 기반의 커스텀 이미지를 만든다.
+        (A) 웹 서버 베이스 이미지 활용(예: NGINX/Apache 등) + 정적 콘텐츠/설정만 교체
+        (B) Linux 베이스 이미지(예: ubuntu/alpine 등) + 기본 기능(패키지/사용자/환경변수/헬스체크 등) 추가
+    제작 결과는 아래 조건을 만족해야 한다.
+        커스텀 이미지 빌드 성공 및 컨테이너 실행 성공
+        기술 문서에 다음을 포함한다.
+            어떤 “기존 베이스(이미지/예시 Dockerfile)”를 선택했는지
+            내가 적용한 커스텀 포인트 각각의 목적(간단 요약)
+            빌드/실행 명령 + 핵심 결과(출력/스크린샷)
 
+포트 매핑 및 접속 증거
+    브라우저 접속 화면(또는 curl 응답)을 기술 문서에 첨부한다.
+
+Docker 볼륨 영속성 검증
+    Docker 볼륨을 생성하고 컨테이너에 연결한다.
+    컨테이너 삭제 전/후로 데이터를 확인하여 데이터가 유지됨을 증명한다.
+    기술 문서에 생성/연결/검증 절차(명령+출력)를 포함한다.
 
 - [x] 포트 매핑 접속(2회)
 - [x] 바인드 마운트 반영
