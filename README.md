@@ -194,7 +194,7 @@ root@901195528e5d:/temp/mydir# ls
 file2.txt  file4.txt
 ```
 
-- [x] 권한 변경 실습
+- [x] 권한 변경 실습  
 아래는 temp 폴더 안의 파일과 폴더.
 폴더의 권한설정은 drwxr-xr-x 파일은 -rw-r--r--
 ```
@@ -216,10 +216,62 @@ total 8
 drwx------ 2 root root 4096 Nov  5 13:02 mydir
 ```
 
+- [x] Docker 설치/점검  
+```
+omg@DESKTOP-6MDPNB3:~$ docker --version
+Docker version 29.9.2, build a82e528
+omg@DESKTOP-6MDPNB3:~$ docker info
+Client:
+ Version:    29.9.2
+ Context:    default
+ ...
+```
 
-- [x] Docker 설치/점검
-- [x] hello-world 실행
-- [x] Dockerfile 빌드/실행
+- [x] hello-world 실행  
+이미 만들어져있는 기본 이미지 중 하나인 hello-world 이미지를 기반으로 컨테이너 생성
+```
+omg@DESKTOP-6MDPNB3:~$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+4f55086f7dd0: Pull complete 
+d5e71e642bf5: Download complete 
+Digest: sha256:c567b231f65614688711a75f31518a064258a51d442117a3e771a3a8fdba78ef
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+```
+현재 생성된 컨테이너의 목록을 보여줌. hello-world 이미지로 컨테이너 만들때 이름을 특정하지 않아서 'adoring_fermi'라는
+랜덤 이름이 붙게됨. 이 컨테이너는 사용 중이지 않아서 status가 Exited 로 표시됨.
+```
+omg@DESKTOP-6MDPNB3:~$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+b9e3fa3d3bef   hello-world   "/hello"   50 seconds ago   Exited (0) 50 seconds ago             adoring_fermi
+```
+아래 코드는 현재 생성된 이미지를 보여줌.
+```
+omg@DESKTOP-6MDPNB3:~$ docker images
+                                                                                                                                         i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   c567b231f656       25.9kB         9.49kB    U   
+omg@DESKTOP-6MDPNB3:~$ 
+```
+
+- [x] Dockerfile 빌드/실행  
+
+Docker 기본 운영 명령 수행
+    이미지: 다운로드/목록 확인 (예: docker images)
+    컨테이너: 실행/중지/목록 확인 (예: docker ps, docker ps -a)
+    운영: 로그 확인 (예: docker logs), 리소스 확인 (예: docker stats)
+    수행 명령과 출력 결과를 기술 문서에 남긴다.
+
+컨테이너 실행 실습
+    hello-world 실행 성공을 기록한다.
+    ubuntu 컨테이너를 실행하고 내부 진입 후 간단 명령(예: ls, echo) 수행 결과를 기록한다.
+    컨테이너 종료/유지(attach/exec 등)의 차이를 스스로 관찰하고 간단히 정리한다.
+
+
 - [x] 포트 매핑 접속(2회)
 - [x] 바인드 마운트 반영
 - [x] 볼륨 영속성
