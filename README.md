@@ -118,6 +118,11 @@ mybox
 omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox bash
 root@901195528e5d:/# 
 ```
+> pwd : 현재 작업 중인 디렉터리(폴더)의 전체 절대 경로를 화면에 출력
+```
+root@901195528e5d:/home/ubuntu# pwd
+/home/ubuntu
+```
 > 현재 디렉토리안에 있는 일반파일과 폴더를 보여주는 명령어 ls
 ```
 root@901195528e5d:/# ls
@@ -146,14 +151,48 @@ root@901195528e5d:/home# cd ..
 root@901195528e5d:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  memo.txt  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
 ```
-
+> mkdir로 temp, mydir 폴더 만들고, touch로 file.txt 이름의 빈 파일 만들기  
+```
 root@901195528e5d:/# mkdir temp
 root@901195528e5d:/# cd temp
 root@901195528e5d:/temp# touch file.txt
 root@901195528e5d:/temp# mkdir mydir
 root@901195528e5d:/temp# ls
 file.txt  mydir
-root@901195528e5d:/temp# 
+```
+> echo로 단순 문장이 있는 file2.txt 만들고, cat으로 file2.txt 내용 출력   
+```
+root@901195528e5d:/temp# echo "what the hell" > file2.txt
+root@901195528e5d:/temp# ls
+file.txt  file2.txt  mydir
+root@901195528e5d:/temp# cat file2.txt
+what the hell
+```
+> cp 명령어로 파일을 복사하기. 복사하는 위치도 지정가능
+```
+root@901195528e5d:/temp# cp file2.txt file3.txt
+root@901195528e5d:/temp# ls
+file.txt  file2.txt  file3.txt  mydir
+root@901195528e5d:/temp# cp file3.txt /temp/mydir/
+root@901195528e5d:/temp# cd mydir
+root@901195528e5d:/temp/mydir# ls
+file3.txt
+```
+> mv 명령어로 파일을 이동시킴 (file2.txt 를 temp폴더에서 temp의 하위폴더인 mydir로 이동)  
+```
+root@901195528e5d:/temp# mv file2.txt /temp/mydir
+root@901195528e5d:/temp# ls
+file.txt  file3.txt  mydir
+root@901195528e5d:/temp# cd mydir
+root@901195528e5d:/temp/mydir# ls
+file2.txt  file3.txt
+```
+> mv 명령어로 폴더나 파일의 이름 변경도 가능.  
+```
+root@901195528e5d:/temp/mydir# mv file3.txt file4.txt
+root@901195528e5d:/temp/mydir# ls
+file2.txt  file4.txt
+```
 
 터미널 조작 로그 기록
 다음 작업을 터미널로 수행하고, 명령어 + 출력 결과를 기술 문서에 기록한다.
