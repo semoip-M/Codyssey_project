@@ -306,7 +306,7 @@ b9e3fa3d3bef   hello-world   "/hello"      59 minutes ago   Exited (0) 59 minute
 omg@DESKTOP-6MDPNB3:~$ 
 ```
 전처럼, mybox1의 우분투 터미널로 접속하려면 exec 명령어를 이용.  
-그러기 위해선 컨테이너가 start 명령어로 이미 실행 중이 상태여야 한다.
+그러기 위해선 컨테이너가 start 명령어로 이미 실행 중이 상태여야 한다.  
 그리고 docker stop [컨테이너 이름]을 사용해야만 그 컨테이너 status가 exited로 바뀐다.
 ```
 omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox1 bash
@@ -316,7 +316,6 @@ root@ea5249983202:/# echo 'you are fired'
 you are fired
 root@ea5249983202:/#
 ```
-
 
 - [x] Dockerfile 빌드/실행  
 /mnt/c/Users/omg/vsc_practice 이 폴더 안에 dockerfile을 미리 만들어 두고 새로운 이미지 생성.  
@@ -344,6 +343,20 @@ ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U
 omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -d -p 8080:80 --name myweb1 myimg
 16c1f142cdea009fcc10e63cba7b4da4a6e96a5f4858c11f2006fed22cce888a
 ```
+curl 명령어를 이용하여 웹서버가 페이지를 출력함.  
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8080
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>My First Container</title></head>
+<body>
+    <h1>안녕하세요, 홍길동입니다</h1>
+    <p>이 페이지는 Docker 컨테이너 안에서 실행되고 있습니다.</p>
+</body>
+</html>
+```
+브라우저에 http://localhost:8080 에 접속하면 아래와 같은 웹페이지가 로드됨.  
 <img width="987" height="399" alt="image" src="https://github.com/user-attachments/assets/1671f7cf-7ede-4b04-a621-6eee795165be" />
 
 
