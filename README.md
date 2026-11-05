@@ -1,50 +1,5 @@
 # Codyssey_project
 
-제출 저장소 및 기술 문서
-    GitHub Repository 링크로 제출한다.
-    기술 문서(README.md 등)는 아래 내용을 반드시 포함한다.
-        모든 수행 결과는 “기술 문서(README.md 등)”에서 확인 가능해야 한다.
-      >>프로젝트 개요(미션 목표 요약)
-      >>실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)
-      >>수행 항목 체크리스트(터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
-        검증 방법(어떤 명령으로 무엇을 확인했는지) + 결과 위치/증거 링크
-    기술 문서 내 명령/출력은 코드블록으로 정리한다.
-
-터미널 조작 로그 기록
-    다음 작업을 터미널로 수행하고, 명령어 + 출력 결과를 기술 문서에 기록한다.
-        현재 위치 확인, 목록 확인(숨김 파일 포함), 이동, 생성, 복사, 이동/이름변경, 삭제
-        파일 내용 확인, 빈 파일 생성
-
-권한 실습 및 증거 기록
-    권한을 확인/변경하는 명령을 수행하고, 변경 전/후 비교를 기술 문서에 남긴다.
-    최소 요구: 파일 1개, 디렉토리 1개에 대해 권한 변경 실험을 수행한다.
-
-Docker 설치 및 기본 점검
-    Docker 버전 확인 결과를 기록한다. (docker --version)
-    Docker 데몬 동작 여부 확인 결과를 기록한다. (docker info 또는 동등 점검)
-
-Docker 기본 운영 명령 수행
-    이미지: 다운로드/목록 확인 (예: docker images)
-    컨테이너: 실행/중지/목록 확인 (예: docker ps, docker ps -a)
-    운영: 로그 확인 (예: docker logs), 리소스 확인 (예: docker stats)
-    수행 명령과 출력 결과를 기술 문서에 남긴다.
-
-컨테이너 실행 실습
-    hello-world 실행 성공을 기록한다.
-    ubuntu 컨테이너를 실행하고 내부 진입 후 간단 명령(예: ls, echo) 수행 결과를 기록한다.
-    컨테이너 종료/유지(attach/exec 등)의 차이를 스스로 관찰하고 간단히 정리한다.
-
-기존 Dockerfile 기반 커스텀 이미지 제작
-    아래 방식 중 하나를 선택하여 기존 Dockerfile/이미지 기반의 커스텀 이미지를 만든다.
-        (A) 웹 서버 베이스 이미지 활용(예: NGINX/Apache 등) + 정적 콘텐츠/설정만 교체
-        (B) Linux 베이스 이미지(예: ubuntu/alpine 등) + 기본 기능(패키지/사용자/환경변수/헬스체크 등) 추가
-    제작 결과는 아래 조건을 만족해야 한다.
-        커스텀 이미지 빌드 성공 및 컨테이너 실행 성공
-        기술 문서에 다음을 포함한다.
-            어떤 “기존 베이스(이미지/예시 Dockerfile)”를 선택했는지
-            내가 적용한 커스텀 포인트 각각의 목적(간단 요약)
-            빌드/실행 명령 + 핵심 결과(출력/스크린샷)
-
 포트 매핑 및 접속 증거
     브라우저 접속 화면(또는 curl 응답)을 기술 문서에 첨부한다.
 
@@ -343,7 +298,7 @@ ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U
 omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -d -p 8080:80 --name myweb1 myimg
 16c1f142cdea009fcc10e63cba7b4da4a6e96a5f4858c11f2006fed22cce888a
 ```
-curl 명령어를 이용하여 웹서버가 페이지를 출력함.  
+curl 명령어를 이용하여 웹서버가 아래와 같은 페이지를 출력하는 것을 확인 가능  
 ```
 omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8080
 <!-- index.html -->
@@ -357,34 +312,99 @@ omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8080
 </html>
 ```
 브라우저에 http://localhost:8080 에 접속하면 아래와 같은 웹페이지가 로드됨.  
-<img width="987" height="399" alt="image" src="https://github.com/user-attachments/assets/1671f7cf-7ede-4b04-a621-6eee795165be" />
-
-
-
-
-
-기존 Dockerfile 기반 커스텀 이미지 제작
-    아래 방식 중 하나를 선택하여 기존 Dockerfile/이미지 기반의 커스텀 이미지를 만든다.
-        (A) 웹 서버 베이스 이미지 활용(예: NGINX/Apache 등) + 정적 콘텐츠/설정만 교체
-        (B) Linux 베이스 이미지(예: ubuntu/alpine 등) + 기본 기능(패키지/사용자/환경변수/헬스체크 등) 추가
-    제작 결과는 아래 조건을 만족해야 한다.
-        커스텀 이미지 빌드 성공 및 컨테이너 실행 성공
-        기술 문서에 다음을 포함한다.
-            어떤 “기존 베이스(이미지/예시 Dockerfile)”를 선택했는지
-            내가 적용한 커스텀 포인트 각각의 목적(간단 요약)
-            빌드/실행 명령 + 핵심 결과(출력/스크린샷)
-
-포트 매핑 및 접속 증거
-    브라우저 접속 화면(또는 curl 응답)을 기술 문서에 첨부한다.
-
-Docker 볼륨 영속성 검증
-    Docker 볼륨을 생성하고 컨테이너에 연결한다.
-    컨테이너 삭제 전/후로 데이터를 확인하여 데이터가 유지됨을 증명한다.
-    기술 문서에 생성/연결/검증 절차(명령+출력)를 포함한다.
+<img width="987" height="399" alt="image" src="https://github.com/user-attachments/assets/1671f7cf-7ede-4b04-a621-6eee795165be" />  
 
 - [x] 포트 매핑 접속(2회)
+
+myimg 이미지로 웹서버와 연결되는 컨테이너를 생성하는데 내 컴퓨터의 포트 넘버만 8081로 변경한다.  
+그럼에도 브라우저에서 localhost:8081 로 만들어진 웹페이지가 로드됨.  
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -d -p 8081:80 --name myweb2 myimg
+8b699e6adf38e501dcaddcddf7a7100e6f77d93344fe13296bcadf14f42b6f1d
+```
+이번에는 웹서버 포트 넘버를 80에서 81로 변경해본다.  
+이 경우에는 브라우저에서 웹페이지 로드 실패.   
+즉, 웹서버 포트는 80으로 유지되어야 하며 이는 nginx 이미지에 미리 설정된 웹서버 포트넘버 같음.
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -d -p 8082:81 --name myweb3 myimg
+a1ccbed2da2369ee273dc05cbc64ed2b3437df94fba07ff9d37143a3159f3774
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8082
+curl: (56) Recv failure: Connection reset by peer
+```
+
 - [x] 바인드 마운트 반영
+nginx 이미지로 웹서버 연결되는 컨테이너를 만드는 코드. host포트는 8084. 컨테이너 이름은 myweb-live1.  
+-v ${PWD}:/usr/share/nginx/html => 현재 디렉토리가 컨테이너 내부에 존재하는 /usr/share/nginx/html 폴더와 연결됨.  
+html폴더 안의 파일들은 사라지고 디렉토리 내부 파일들로 교체된다.
+```
+docker run -d -p 8084:80 --name myweb-live1 -v ${PWD}:/usr/share/nginx/html nginx
+```
+로컬포트 8084에서 웹페이지 정상 로드.  
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8084
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>My First Container</title></head>
+<body>
+    <h1>안녕하세요, 홍길동입니다</h1>
+    <p>이 페이지는 Docker 컨테이너 안에서 실행되고 있습니다.</p>
+</body>
+</html>
+```
+index.html을 수정하고 저장하는 것만으로 myweb-live1 컨테이너의 html폴더 안의 내용이 변경됨.  
+호스트와 컨테이너가 포트로 (8084:80) 연결되어 있기에 수정 내용이 바로 적용됨. (홍길도 -> 홍길똥)
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ curl http://localhost:8084
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>My First Container</title></head>
+<body>
+    <h1>안녕하세요, 홍길똥입니다</h1>
+    <p>이 페이지는 Docker 컨테이너 안에서 실행되고 있습니다.</p>
+</body>
+</html>
+```
+
+
 - [x] 볼륨 영속성
+먼저 mydata라는 볼륨을 생성. 존재하는 볼륨 리스트 업.
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker volume create mydata
+mydata
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker volume ls
+DRIVER    VOLUME NAME
+local     mydata
+```
+ubuntu 가상 환경의 새로운 컨테이너를 생성하는데, 방금 전 만든 볼륨인 mydata와 우분투 내에 data1이라는 폴더를 만들고 싱크한다.
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -it --name vol-con1 -v mydata:/data1 ubuntu
+root@03643eecd1ed:/# ls                                    
+bin  boot  data1  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@03643eecd1ed:/# cd data1
+root@03643eecd1ed:/data1# ls
+```
+컨테이너 내부에 /data1 폴더에 단순한 문장이 적힌 memo.txt 파일 생성.  
+```
+root@03643eecd1ed:/data1# echo 'hello volume' > /data1/memo.txt
+root@03643eecd1ed:/data1# ls
+memo.txt
+```
+이 memo.txt 파일은 docker desktop에서 mydata라는 볼륨에도 저장된 것을 확인 할 수 있다.  
+<img width="1283" height="714" alt="image" src="https://github.com/user-attachments/assets/3829cb2d-0d09-45af-b167-044cf39ef49b" />  
+
+이제 이 컨테이너를 삭제 후에도 볼륨안에 memo.txt 파일이 남아있는지 확인해본다.  
+기존 컨테이너 삭제 후 새로운 컨테이너를 만드는데, mydata 볼륨을 새 컨테이너의 내부에 /data 폴더와 연동시킨다.  
+그리고 cat /data/memo.txt 명령어로 memo.txt 파일내용을 출력한다. 먄약 볼륨 내부에 memo.txt 파일이 없어졌거나  
+새 컨테이너 내부의 /data 폴더와 연결이 안되어 있다면 memo.txt 내용은 출력되지 못하였을 것이다.  
+```
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker rm vol-con1
+vol-con1
+omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker run -it --rm -v mydata:/data ubuntu cat /data/memo.txt
+hello volume
+```
+
 - [x] Git 설정 + VSCode GitHub 연동
 
 
