@@ -6,7 +6,7 @@
         모든 수행 결과는 “기술 문서(README.md 등)”에서 확인 가능해야 한다.
       >>프로젝트 개요(미션 목표 요약)
       >>실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)
-        수행 항목 체크리스트(터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
+      >>수행 항목 체크리스트(터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
         검증 방법(어떤 명령으로 무엇을 확인했는지) + 결과 위치/증거 링크
     기술 문서 내 명령/출력은 코드블록으로 정리한다.
 
@@ -60,6 +60,22 @@ Git 설정 및 GitHub 연동
 * 기술 문서/로그/스크린샷에 토큰, 비밀번호, 개인키, 인증 코드 등이 포함되지 않도록 마스킹한다.
 * 의심되는 민감정보가 노출된 경우, 즉시 히스토리/문서에서 제거하고 재발급 절차를 수행한다 (가능한 범위에서).
 
+7. 제약 사항
+
+    제출 방식
+        제출은 GitHub Repository 링크로 진행한다.
+        기술 문서(README.md 등)에 수행 로그와 증거가 모두 포함되어야 한다. (별도 파일로 분리하는 것은 가능하나, README에서 링크로 접근이 가능해야 한다.)
+    실행 방식
+        모든 작업은 터미널(CLI) 기반으로 수행한다.
+        Dockerfile은 직접 작성해야 한다.
+        포트 매핑과 마운트/볼륨은 직접 설정하고 동작을 검증해야 한다.
+    증거 수집 규칙
+        캡처/로그에는 “명령어 입력”과 “출력 결과”가 함께 포함되어야 한다.
+        브라우저 접속 증거는 주소창(포트 포함)과 응답 화면이 함께 보이도록 한다.
+        민감정보는 로그/이미지에 남기지 않는다(마스킹 필수).
+    재현성
+        README만 보고도 평가자가 동일 절차를 따라 결과물을 확인할 수 있어야 한다.
+        특정 개인 PC에 종속된 경로/설정이 있다면, 대체 방법 또는 주의사항을 함께 기록한다.
 
 ######################
 
@@ -77,12 +93,79 @@ Docker 버전
 omg@DESKTOP-6MDPNB3:~$ docker --version
 Docker version 29.9.2, build a82e528
 
+omg@DESKTOP-6MDPNB3:~$ docker info
+Client:
+ Version:    29.9.2
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  agent: Docker AI Agent Runner (Docker Inc.)
+    Version:  v1.152.0
+    Path:     /usr/local/lib/docker/cli-plugins/docker-agent
+    ...
+
 Git 버전
-omg@DESKTOP-6MDPNB3 UCRT64 ~
-$ git --version
+omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
 
+## 2) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)
+- [x] 터미널 기본 조작 및 폴더 구성
 
+> docker로 가상 우분트 환경 만들기
+omg@DESKTOP-6MDPNB3:~$ docker start mybox
+mybox
+omg@DESKTOP-6MDPNB3:~$ docker exec -it mybox bash
+root@901195528e5d:/# 
+
+> 현재 디렉토리안에 있는 일반파일과 폴더를 보여주는 명령어 ls
+root@901195528e5d:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
+
+> ls -la : -la 옵션은 longformat, 숨긴파일도 포함해서 보여줌
+root@901195528e5d:/# ls -la
+total 64
+drwxr-xr-x   1 root root 4096 Nov  4 07:41 .
+drwxr-xr-x   1 root root 4096 Nov  4 07:41 ..
+-rwxr-xr-x   1 root root    0 Nov  4 07:10 .dockerenv
+drwxr-xr-x   2 root root 4096 Oct 25 10:26 .rock
+lrwxrwxrwx   1 root root    7 Apr 20  2026 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 20  2026 boot
+...
+
+> cd 명령어로 폴더 이동
+root@901195528e5d:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  memo.txt  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
+root@901195528e5d:/# cd home
+root@901195528e5d:/home# ls
+ubuntu
+root@901195528e5d:/home# cd ..
+root@901195528e5d:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  memo.txt  mnt  opt  proc  root  run  sbin  srv  sys  temp  tmp  usr  var
+
+root@901195528e5d:/# mkdir temp
+root@901195528e5d:/# cd temp
+root@901195528e5d:/temp# touch file.txt
+root@901195528e5d:/temp# mkdir mydir
+root@901195528e5d:/temp# ls
+file.txt  mydir
+root@901195528e5d:/temp# 
+
+터미널 조작 로그 기록
+다음 작업을 터미널로 수행하고, 명령어 + 출력 결과를 기술 문서에 기록한다.
+현재 위치 확인, 목록 확인(숨김 파일 포함), 이동, 생성, 복사, 이동/이름변경,
+삭제파일 내용 확인, 빈 파일 생성
+pwd, ls -la, cd, mkdir, touch, cat, cp,
+mv, rm 한 번씩
+
+
+- [x] 권한 변경 실습
+- [x] Docker 설치/점검
+- [x] hello-world 실행
+- [x] Dockerfile 빌드/실행
+- [x] 포트 매핑 접속(2회)
+- [x] 바인드 마운트 반영
+- [x] 볼륨 영속성
+- [x] Git 설정 + VSCode GitHub 연동
 
 
 
