@@ -108,8 +108,7 @@ Git 버전
 omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
 ```
-
-
+  
 (3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)     
 - [x] 터미널 기본 조작 및 폴더 구성  
 > docker로 가상 우분트 환경 만들기  
