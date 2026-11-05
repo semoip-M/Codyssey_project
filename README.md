@@ -77,17 +77,17 @@ Git 설정 및 GitHub 연동
         README만 보고도 평가자가 동일 절차를 따라 결과물을 확인할 수 있어야 한다.
         특정 개인 PC에 종속된 경로/설정이 있다면, 대체 방법 또는 주의사항을 함께 기록한다.
 
-###########################################################################################################3######################
+####################################################################################################
 
 
-1. 프로젝트 개요
+1. 프로젝트 개요  
 docker desktop 및 터미널을 활용법을 익혀서, 앞으로 있을 AI관련 프로젝트를 원활히 진행하기 위한 작업 환경을 구축하는 것이 이번 미션1의 목표 
 
-2. 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)
-OS: Windows 11 pro 26H2
-Linux 환경 : WSL2 설치 및 Ubuntu 사용
-Shell: Bash (Ubuntu와 Git Bash에서 사용)
-Terminal: Visual Studio Code Integrated Termina
+2. 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)  
+OS: Windows 11 pro 26H2  
+Linux 환경 : WSL2 설치 및 Ubuntu 사용  
+Shell: Bash (Ubuntu와 Git Bash에서 사용)  
+Terminal: Visual Studio Code Integrated Termina     
 
 Docker 버전  
 ```
