@@ -109,7 +109,7 @@ omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
 ```
 
-(3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)     
+(3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)  
 - [x] 터미널 기본 조작 및 폴더 구성  
 > docker로 가상 우분트 환경 만들기  
 ```
@@ -195,7 +195,7 @@ file2.txt  file4.txt
 ```
 
 - [x] 권한 변경 실습  
-아래는 temp 폴더 안의 파일과 폴더.
+아래는 temp 폴더 안의 파일과 폴더.  
 폴더의 권한설정은 drwxr-xr-x 파일은 -rw-r--r--
 ```
 root@901195528e5d:/temp# ls -l
@@ -204,8 +204,8 @@ total 8
 -rw-r--r-- 1 root root   14 Nov  5 12:19 file3.txt
 drwxr-xr-x 2 root root 4096 Nov  5 13:02 mydir
 ```
-아래는 mydir 폴더의 권한을 700으로, file.txt 파일의 권한을 600으로 변경
-소유자에게만 read, write이 남아있는 걸을 file3.txt의 권한을 보면 비교 가능
+아래는 mydir 폴더의 권한을 700으로, file.txt 파일의 권한을 600으로 변경  
+소유자에게만 read, write이 남아있는 걸을 file3.txt의 권한을 보면 비교 가능  
 ```
 root@901195528e5d:/temp# chmod 700 mydir
 root@901195528e5d:/temp# chmod 600 file.txt
