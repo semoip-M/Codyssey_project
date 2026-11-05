@@ -1,19 +1,6 @@
 # Codyssey_project
 
-포트 매핑 및 접속 증거
-    브라우저 접속 화면(또는 curl 응답)을 기술 문서에 첨부한다.
 
-Docker 볼륨 영속성 검증
-    Docker 볼륨을 생성하고 컨테이너에 연결한다.
-    컨테이너 삭제 전/후로 데이터를 확인하여 데이터가 유지됨을 증명한다.
-    기술 문서에 생성/연결/검증 절차(명령+출력)를 포함한다.
-
-Git 설정 및 GitHub 연동
-* Git 사용자 정보/기본 브랜치 설정을 완료하고 git config --list 결과를 기록한다.
-* GitHub 로그인 및 저장소 연동을 완료하고, 연동 증거(스크린샷 등)를 기술 문서에 첨부한다.
-보안 및 개인정보 보호
-* 기술 문서/로그/스크린샷에 토큰, 비밀번호, 개인키, 인증 코드 등이 포함되지 않도록 마스킹한다.
-* 의심되는 민감정보가 노출된 경우, 즉시 히스토리/문서에서 제거하고 재발급 절차를 수행한다 (가능한 범위에서).
 
 7. 제약 사항
 
@@ -391,13 +378,13 @@ root@03643eecd1ed:/data1# echo 'hello volume' > /data1/memo.txt
 root@03643eecd1ed:/data1# ls
 memo.txt
 ```
-이 memo.txt 파일은 docker desktop에서 mydata라는 볼륨에도 저장된 것을 확인 할 수 있다.  
+이 memo.txt 파일은 docker desktop에서 mydata라는 볼륨에도 저장된 것을 확인 할 수 있다. 컨테이너 삭제 후에도 남아 있음.  
 <img width="1283" height="714" alt="image" src="https://github.com/user-attachments/assets/3829cb2d-0d09-45af-b167-044cf39ef49b" />  
 
-이제 이 컨테이너를 삭제 후에도 볼륨안에 memo.txt 파일이 남아있는지 확인해본다.  
-기존 컨테이너 삭제 후 새로운 컨테이너를 만드는데, mydata 볼륨을 새 컨테이너의 내부에 /data 폴더와 연동시킨다.  
+기존 컨테이너 삭제 후 새로운 컨테이너를 만드는데, mydata 볼륨을 새 컨테이너의 내부의 /data 폴더와 연동시킨다.  
 그리고 cat /data/memo.txt 명령어로 memo.txt 파일내용을 출력한다. 먄약 볼륨 내부에 memo.txt 파일이 없어졌거나  
 새 컨테이너 내부의 /data 폴더와 연결이 안되어 있다면 memo.txt 내용은 출력되지 못하였을 것이다.  
+하지만 'hello volume'이 terminal에 출력됨은 확인.
 ```
 omg@DESKTOP-6MDPNB3:/mnt/c/Users/omg/vsc_practice$ docker rm vol-con1
 vol-con1
@@ -407,6 +394,13 @@ hello volume
 
 - [x] Git 설정 + VSCode GitHub 연동
 
+<img width="709" height="533" alt="image" src="https://github.com/user-attachments/assets/1c68cdcc-6a0a-4e64-9e57-fd42886e6f15" />
 
+Git 설정 및 GitHub 연동
+* Git 사용자 정보/기본 브랜치 설정을 완료하고 git config --list 결과를 기록한다.
+* GitHub 로그인 및 저장소 연동을 완료하고, 연동 증거(스크린샷 등)를 기술 문서에 첨부한다.
+보안 및 개인정보 보호
+* 기술 문서/로그/스크린샷에 토큰, 비밀번호, 개인키, 인증 코드 등이 포함되지 않도록 마스킹한다.
+* 의심되는 민감정보가 노출된 경우, 즉시 히스토리/문서에서 제거하고 재발급 절차를 수행한다 (가능한 범위에서).
 
 
