@@ -79,10 +79,10 @@ Git 설정 및 GitHub 연동
 
 ####################################################################################################
 
-1) 프로젝트 개요  
+(1) 프로젝트 개요  
 docker desktop 및 터미널의 활용법을 익혀서, 추후 AI 관련 프로젝트를 원활히 진행하기 위한 작업 환경 구축
 
-2) 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)  
+(2) 실행 환경(OS/쉘/터미널, Docker 버전, Git 버전)  
 OS: Windows 11 pro 26H2  
 Linux 환경 : WSL2 설치 및 Ubuntu 사용  
 Shell: Bash (Ubuntu와 Git Bash에서 사용)  
@@ -109,7 +109,7 @@ omg@DESKTOP-6MDPNB3 UCRT64 ~$ git --version
 git version 2.56.0.windows.4
 ```
 
-3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)     
+(3) 수행 체크리스트 (터미널/권한/Docker/Dockerfile/포트/마운트/볼륨/Git/GitHub)     
 - [x] 터미널 기본 조작 및 폴더 구성  
 > docker로 가상 우분트 환경 만들기  
 ```
