@@ -77,7 +77,7 @@ Git 설정 및 GitHub 연동
         README만 보고도 평가자가 동일 절차를 따라 결과물을 확인할 수 있어야 한다.
         특정 개인 PC에 종속된 경로/설정이 있다면, 대체 방법 또는 주의사항을 함께 기록한다.
 
-######################
+###########################################################################################################3######################
 
 
 1. 프로젝트 개요
@@ -90,8 +90,10 @@ Shell: Bash (Ubuntu와 Git Bash에서 사용)
 Terminal: Visual Studio Code Integrated Terminal
 
 Docker 버전  
-```omg@DESKTOP-6MDPNB3:~$ docker --version```<br>
+```
+omg@DESKTOP-6MDPNB3:~$ docker --version
 Docker version 29.9.2, build a82e528
+```
 
 omg@DESKTOP-6MDPNB3:~$ docker info
 Client:
