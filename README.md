@@ -192,7 +192,6 @@ b9e3fa3d3bef   hello-world   "/hello"      49 minutes ago   Exited (0) 49 minute
 아래 코드는 현재 생성된 이미지를 보여줌.
 ```
 omg@DESKTOP-6MDPNB3:~$ docker images
-                                                                                                                                         i Info →   U  In Use
 IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
 hello-world:latest   c567b231f656       25.9kB         9.49kB    U   
 ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U   
@@ -358,7 +357,7 @@ root@03643eecd1ed:/data1# ls
 memo.txt
 ```
 이 memo.txt 파일은 docker desktop에서 mydata라는 볼륨에도 저장된 것을 확인 할 수 있다. 컨테이너 삭제 후에도 남아 있음.  
-<img width="1283" height="714" alt="image" src="https://github.com/user-attachments/assets/3829cb2d-0d09-45af-b167-044cf39ef49b" />  
+<img width="1283" height="714" alt="image" src="https://github.com/user-attachments/assets/3829cb2d-0d09-45af-b167-044cf39ef49b" />   
 
 기존 컨테이너 삭제 후 새로운 컨테이너를 만드는데, mydata 볼륨을 새 컨테이너의 내부의 /data 폴더와 연동시킨다.  
 그리고 cat /data/memo.txt 명령어로 memo.txt 파일내용을 출력한다. 먄약 볼륨 내부에 memo.txt 파일이 없어졌거나  
@@ -374,9 +373,9 @@ hello volume
 - [x] Git 설정 + VSCode GitHub 연동
 
 Git 사용자 정보/기본 브랜치 설정을 완료하고 git config --list 결과를 기록  
-<img width="709" height="533" alt="image" src="https://github.com/user-attachments/assets/1c68cdcc-6a0a-4e64-9e57-fd42886e6f15" />
+<img width="709" height="533" alt="image" src="https://github.com/user-attachments/assets/1c68cdcc-6a0a-4e64-9e57-fd42886e6f15" />  
 GitHub 연동  
-<img width="803" height="594" alt="image" src="https://github.com/user-attachments/assets/ddf15489-e140-47ff-8530-f2cd8951ae18" />
+<img width="803" height="594" alt="image" src="https://github.com/user-attachments/assets/ddf15489-e140-47ff-8530-f2cd8951ae18" />  
 
 
 
