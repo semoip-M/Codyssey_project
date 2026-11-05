@@ -90,7 +90,7 @@ Shell: Bash (Ubuntu와 Git Bash에서 사용)
 Terminal: Visual Studio Code Integrated Terminal
 
 Docker 버전
-omg@DESKTOP-6MDPNB3:~$ docker --version
+```omg@DESKTOP-6MDPNB3:~$ docker --version```
 Docker version 29.9.2, build a82e528
 
 omg@DESKTOP-6MDPNB3:~$ docker info
