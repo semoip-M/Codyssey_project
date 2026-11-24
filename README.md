@@ -127,6 +127,8 @@ drwxr-xr-x 2 root root 4096 Nov  5 13:02 mydir
 ```
 아래는 mydir 폴더의 권한을 700으로, file.txt 파일의 권한을 600으로 변경  
 소유자에게만 read, write이 남아있는 걸을 file3.txt의 권한을 보면 비교 가능  
+세자리 숫자는 어떤 권한을 부여하는지 나타낸다.  
+읽기=4, 쓰기=2, 실행=1 이며 모든 권한이 부여되면 
 ```
 root@901195528e5d:/temp# chmod 700 mydir
 root@901195528e5d:/temp# chmod 600 file.txt
