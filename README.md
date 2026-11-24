@@ -128,7 +128,8 @@ drwxr-xr-x 2 root root 4096 Nov  5 13:02 mydir
 아래는 mydir 폴더의 권한을 700으로, file.txt 파일의 권한을 600으로 변경  
 소유자에게만 read, write이 남아있는 걸을 file3.txt의 권한을 보면 비교 가능  
 세자리 숫자는 어떤 권한을 부여하는지 나타낸다.  
-읽기=4, 쓰기=2, 실행=1 이며 모든 권한이 부여되면 
+읽기(r)=4, 쓰기(w)=2, 실행(x)=1 이며 모든 권한이 부여되면 7이고 아무 권한이 없으면 0으로 출력된다.  
+세자리 숫자의 각 자리는 어떤 사용자인지 구분하는 것이다. 백의 자리 숫자는 소유자, 십의 자리는 소유 그룹, 일의 자리 숫자는 기타 사용자를 의미한다.  
 ```
 root@901195528e5d:/temp# chmod 700 mydir
 root@901195528e5d:/temp# chmod 600 file.txt
@@ -152,6 +153,7 @@ Client:
 
 - [x] hello-world 실행 + ubuntu image 활용  
 이미 만들어져있는 기본 이미지 중 하나인 hello-world 이미지를 기반으로 컨테이너 생성  
+이미지는 개발 환경이나 시스템을 설계도라고 생각할 수 있다. 이미지가 있다면 누구나 이 이미지를 이용해서 컨테이너안에 서로 다른 컴퓨터에서 같은 환경에서 작업을 할 수 있다. 여기서 컨테이너는 이미지의 설계에 따라 만들어진 작업 공간이라고 볼 수 있다.
 ```
 omg@DESKTOP-6MDPNB3:~$ docker run hello-world
 Unable to find image 'hello-world:latest' locally
